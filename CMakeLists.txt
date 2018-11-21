@@ -7,3 +7,4 @@ set(SOURCE_FILES
         DataDecoder.cpp)
 
 add_executable(DataDecoder ${SOURCE_FILES})
+add_executable(DataEncoder DataEncoder.cpp)

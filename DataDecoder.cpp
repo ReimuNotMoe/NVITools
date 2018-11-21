@@ -2,13 +2,25 @@
 #include <cstdlib>
 #include <cinttypes>
 #include <vector>
+#include <cstring>
 
 int main(int argc, char **argv) {
 
+	int base = 10;
+	int i = 1;
+
+	if (argv[1]) {
+		if (0 == strcmp(argv[1], "--hex")) {
+			base = 16;
+			i = 2;
+			printf("Using hex mode.\n");
+		}
+	}
+
 	std::vector<uint8_t> buf;
 
-	for (int i=1; i<argc; i++) {
-		auto byte = (uint8_t)strtol(argv[i], NULL, 10);
+	for (; i<argc; i++) {
+		auto byte = (uint8_t)strtol(argv[i], NULL, base);
 		buf.push_back(byte);
 	}
 
